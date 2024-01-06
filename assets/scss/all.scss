@@ -1,11 +1,10 @@
 @import "../../node_modules/bootstrap/scss/functions";
-@import './utils/variables';
+@import "./utils/variables";
 
+@import "./layout/header.scss";
+@import "./layout/footer.scss";
 
-@import './layout/header.scss';
-@import './layout/footer.scss';
-
-
-@import './pages/index.scss';
+@import "./pages/index.scss";
+@import "./pages/login.scss";
 
 @import "../../node_modules/bootstrap";
