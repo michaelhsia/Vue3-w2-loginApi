@@ -19,6 +19,7 @@ const url = "https://ec-course-api.hexschool.io/v2";
 const app = createApp({
   data() {
     return {
+      // 登入會用到的資料
       user: {
         username: "",
         password: "",

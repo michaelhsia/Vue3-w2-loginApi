@@ -12,13 +12,13 @@ const url = "https://ec-course-api.hexschool.io/v2";
 // API path
 const path = "michaelhsia";
 
-// 從cookie取得token資料
+// 從 cookie 取得 token 資料
 const token = document.cookie.replace(
   /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
   "$1"
 );
 
-// 在發送請求時夾帶 headers 資料，放在全域的話，每次發請求都會自動夾帶
+// 有些 request 需要夾帶 token 才能使用，所以在發送請求時夾帶 headers 資料，放在全域的話，每次發請求都會自動夾帶
 axios.defaults.headers.common["Authorization"] = token;
 
 // 流程：
@@ -55,6 +55,7 @@ const app = createApp({
     // 在created 時，驗證是否登入，如果沒通過驗證就跑 catch
     axios
       .post(`${url}/api/user/check`)
+      // 有登入就抓取外部資料渲染畫面
       .then((res) => this.getProductData())
       .catch((err) => {
         // 未登入的提醒
