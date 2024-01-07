@@ -31,19 +31,24 @@ axios.defaults.headers.common["Authorization"] = token;
 const app = createApp({
   data() {
     return {
+      // products 陣列存取外部回傳的產品資料
       products: [],
+      // temp 物件存取要渲染的產品細節
+      temp: {},
     };
   },
   methods: {
-    // 未登入，所以跳回登入頁面
+    // 未登入，會跳回登入頁面
     backToLogin() {
       setTimeout(() => (location.href = "login.html"), 1500);
     },
 
+    // 發送請求抓取外部產品資料
     getProductData() {
       axios
         .get(`${url}/api/${path}/admin/products`)
-        .then((res) => (this.products = res.data.products));
+        .then((res) => (this.products = res.data.products))
+        .catch((err) => alert(`發生錯誤： ${err.response} 請檢查錯誤`));
     },
   },
   created() {
