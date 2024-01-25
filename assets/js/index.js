@@ -33,8 +33,8 @@ const app = createApp({
     return {
       // products 陣列存取外部回傳的產品資料
       products: [],
-      // temp 物件存取要渲染的產品細節
-      temp: {},
+      // tempProduct 物件存取要渲染的產品細節
+      tempProduct: {},
     };
   },
   methods: {

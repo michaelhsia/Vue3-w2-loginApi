@@ -31,7 +31,7 @@ const app = createApp({
       axios
         .post(`${url}/admin/signin`, this.user)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           // 把回傳的 token 及 expired timestamp 用解構賦值方式存成同名變數
           const { token, expired } = res.data;
 
@@ -50,7 +50,15 @@ const app = createApp({
           // 用 setTimeout 等通知跑完再跳商品頁
           setTimeout(() => (location.href = "index.html"), 1500);
         })
-        .catch((err) => console.dir(err.response));
+        .catch((err) => {
+          // 加入 sweetalert2 登入錯誤通知
+          Swal.fire({
+            title: `${err.response.data.message}`,
+            icon: "warning",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        });
     },
   },
 });
